@@ -1,20 +1,23 @@
 from bot.session_manager import Session
 from common.log import logger
-'''
+
+"""
     e.g.  [
         {"role": "system", "content": "You are a helpful assistant."},
         {"role": "user", "content": "Who won the world series in 2020?"},
         {"role": "assistant", "content": "The Los Angeles Dodgers won the World Series in 2020."},
         {"role": "user", "content": "Where was it played?"}
     ]
-'''
+"""
+
+
 class ChatGPTSession(Session):
-    def __init__(self, session_id, system_prompt=None, model= "gpt-3.5-turbo"):
+    def __init__(self, session_id, system_prompt=None, model="gpt-3.5-turbo"):
         super().__init__(session_id, system_prompt)
         self.model = model
         self.reset()
-    
-    def discard_exceeding(self, max_tokens, cur_tokens= None):
+
+    def discard_exceeding(self, max_tokens, cur_tokens=None):
         precise = True
         try:
             cur_tokens = self.calc_tokens()
@@ -44,15 +47,16 @@ class ChatGPTSession(Session):
             else:
                 cur_tokens = cur_tokens - max_tokens
         return cur_tokens
-    
+
     def calc_tokens(self):
         return num_tokens_from_messages(self.messages, self.model)
-    
+
 
 # refer to https://github.com/openai/openai-cookbook/blob/main/examples/How_to_count_tokens_with_tiktoken.ipynb
 def num_tokens_from_messages(messages, model):
     """Returns the number of tokens used by a list of messages."""
     import tiktoken
+
     try:
         encoding = tiktoken.encoding_for_model(model)
     except KeyError:
