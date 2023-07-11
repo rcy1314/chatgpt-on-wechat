@@ -55,6 +55,7 @@ class Tool(Plugin):
             const.CHATGPT,
             const.OPEN_AI,
             const.CHATGPTONAZURE,
+            const.LINKAI,
         ):
             return
 
@@ -136,6 +137,7 @@ class Tool(Plugin):
             "debug": kwargs.get("debug", False),
             "openai_api_key": conf().get("open_ai_api_key", ""),
             "open_ai_api_base": conf().get("open_ai_api_base", "https://api.openai.com/v1"),
+            "deployment_id": conf().get("azure_deployment_id", ""),
             "proxy": conf().get("proxy", ""),
             "request_timeout": request_timeout if request_timeout else conf().get("request_timeout", 120),
             # note: 目前tool暂未对其他模型测试，但这里仍对配置来源做了优先级区分，一般插件配置可覆盖全局配置

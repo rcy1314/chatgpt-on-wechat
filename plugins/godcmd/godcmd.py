@@ -285,9 +285,9 @@ class Godcmd(Plugin):
                         ok, result = False, "请提供一个GPT模型"
                 elif cmd == "gpt_model":
                     user_data = conf().get_user_data(user)
-                    model = conf().get('model')
-                    if 'gpt_model' in user_data:
-                        model = user_data['gpt_model']
+                    model = conf().get("model")
+                    if "gpt_model" in user_data:
+                        model = user_data["gpt_model"]
                     ok, result = True, "你的GPT模型为" + str(model)
                 elif cmd == "reset_gpt_model":
                     try:
@@ -297,7 +297,7 @@ class Godcmd(Plugin):
                     except Exception as e:
                         ok, result = False, "你没有设置私有GPT模型"
                 elif cmd == "reset":
-                    if bottype in [const.OPEN_AI, const.CHATGPT, const.CHATGPTONAZURE]:
+                    if bottype in [const.OPEN_AI, const.CHATGPT, const.CHATGPTONAZURE, const.LINKAI]:
                         bot.sessions.clear_session(session_id)
                         channel.cancel_session(session_id)
                         ok, result = True, "会话已重置"
@@ -320,7 +320,7 @@ class Godcmd(Plugin):
                             load_config()
                             ok, result = True, "配置已重载"
                         elif cmd == "resetall":
-                            if bottype in [const.OPEN_AI, const.CHATGPT, const.CHATGPTONAZURE]:
+                            if bottype in [const.OPEN_AI, const.CHATGPT, const.CHATGPTONAZURE, const.LINKAI]:
                                 channel.cancel_all_session()
                                 bot.sessions.clear_all_session()
                                 ok, result = True, "重置所有会话成功"
