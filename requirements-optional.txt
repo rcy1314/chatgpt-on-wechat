@@ -23,8 +23,10 @@ web.py
 wechatpy
 
 # chatgpt-tool-hub plugin
---extra-index-url https://pypi.python.org/simple
 chatgpt_tool_hub==0.4.6
 
 # xunfei spark
 websocket-client==1.2.0
+
+# claude bot
+curl_cffi
