@@ -33,6 +33,3 @@ curl_cffi
 
 # tongyi qwen
 broadscope_bailian
-
-# google
-google-generativeai
