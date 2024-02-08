@@ -132,7 +132,11 @@ available_setting = {
     "feishu_app_secret": "",  # 飞书机器人APP secret
     "feishu_token": "",  # 飞书 verification token
     "feishu_bot_name": "",  # 飞书机器人的名字
-
+    
+    # 钉钉配置
+    "dingtalk_client_id": "",  # 钉钉机器人Client ID 
+    "dingtalk_client_secret": "",  # 钉钉机器人Client Secret 
+    
     # chatgpt指令自定义触发词
     "clear_memory_commands": ["#清除记忆"],  # 重置会话指令，必须以#开头
     # channel配置
@@ -144,7 +148,12 @@ available_setting = {
     "plugin_trigger_prefix": "$",  # 规范插件提供聊天相关指令的前缀，建议不要和管理员指令前缀"#"冲突
     # 是否使用全局插件配置
     "use_global_plugin_config": False,
-    # 知识库平台配置
+    "max_media_send_count": 3,     # 单次最大发送媒体资源的个数
+    "media_send_interval": 1,  # 发送图片的事件间隔，单位秒
+    # 智谱AI 平台配置
+    "zhipu_ai_api_key": "",
+    "zhipu_ai_api_base": "https://open.bigmodel.cn/api/paas/v4",
+    # LinkAI平台配置
     "use_linkai": False,
     "linkai_api_key": "",
     "linkai_app_code": "",
