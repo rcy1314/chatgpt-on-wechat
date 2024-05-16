@@ -69,7 +69,7 @@ class LinkAI(Plugin):
             return
 
         if (context.type == ContextType.SHARING and self._is_summary_open(context)) or \
-                (context.type == ContextType.TEXT and LinkSummary().check_url(context.content)):
+                (context.type == ContextType.TEXT and self._is_summary_open(context) and LinkSummary().check_url(context.content)):
             if not LinkSummary().check_url(context.content):
                 return
             _send_info(e_context, "正在为你加速生成摘要，请稍后")
@@ -196,7 +196,7 @@ class LinkAI(Plugin):
         if context.kwargs.get("isgroup") and not self.sum_config.get("group_enabled"):
             return False
         support_type = self.sum_config.get("type") or ["FILE", "SHARING"]
-        if context.type.name not in support_type:
+        if context.type.name not in support_type and context.type.name != "TEXT":
             return False
         return True
 
